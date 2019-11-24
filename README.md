@@ -1,6 +1,6 @@
 Hi, I'm Quang Nguyen. 
 
-This is my interviewing test with gapo, an simple web app to manage users infomation. 
+This is my interviewing test with Gapo, an simple web app to manage users infomation. 
 This app focus in frontend with ReactJs, using no frontend package but styled component,
 besides, it need a backend server to send requests and get responses, so i built a simple server by nodeJs, too.
 
