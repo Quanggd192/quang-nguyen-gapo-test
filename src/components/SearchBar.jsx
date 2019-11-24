@@ -61,18 +61,24 @@ export default class SearchBar extends Component {
         super()
         this.state = {
             listKeys: [],
-            searchKey: ''
+            searchKey: '',
+            showSugest: true
         }
     }
     
     callSuggestion = async event => {
-        this.setState({searchKey: event.target.value})
+        this.setState({
+            searchKey: event.target.value,
+            showSugest: true
+        })
         // call function
         let listKeys = await Function.suggest(event.target.value)
         this.setState({listKeys})
     }
     hideSuggestingList = () => {
-        this.setState({listKeys: []})
+        this.setState({
+            showSugest: false
+        })
     }
     render() {
         let listKeys = Array.from(this.state.listKeys)
@@ -92,7 +98,7 @@ export default class SearchBar extends Component {
                             />
                         <Button type="button" onClick={() => this.props.onChoose(this.state.searchKey, 1, null)}>Search</Button>
                     </SearchForm>
-                    <SuggestingList>
+                    <SuggestingList style={this.state.showSugest ? {} : {display: "none"}} onOutsideClick={() => this.hideSuggestingList()}>
                         {suggestKeys}
                     </SuggestingList>
                 </SuggestContainer>
