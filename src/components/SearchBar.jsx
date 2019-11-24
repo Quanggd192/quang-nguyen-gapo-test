@@ -72,10 +72,17 @@ export default class SearchBar extends Component {
             showSugest: true
         })
         // call function
-        let listKeys = await Function.suggest(event.target.value)
-        this.setState({listKeys})
+        if(event.target.value !== ""){
+            let listKeys = await Function.suggest(event.target.value)
+            this.setState({listKeys})
+        } else {
+            this.setState({
+                listKeys: []
+            })
+        }
     }
     hideSuggestingList = () => {
+        console.log("adasdsafsaf");
         this.setState({
             showSugest: false
         })
